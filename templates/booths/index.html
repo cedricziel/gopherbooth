@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Index booths</title>
+</head>
+<body>
+<h1>Booths</h1>
+<ul>
+    {{ range . }}
+    <li>{{ .Author }} - {{ .Name }}</li>
+    {{ end }}
+</ul>
+<form action="/booths" method="post">
+    <input name="name" placeholder="Name of the booth"/>
+    <input type="submit"/>
+</form>
+</body>
+</html>
