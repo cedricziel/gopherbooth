@@ -10,6 +10,7 @@ import (
 
 	"model"
 	"model/booth"
+	"util"
 )
 
 // Handles the /booths index route and switches over the route
@@ -26,13 +27,11 @@ func HandleBooths(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Displays all entries in the Datastore of type Booth
 func handleGetAllBooths(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
-	u := user.Current(c)
-	if u == nil {
-		w.Header().Set("Location", "/")
-		return
-	}
+
+	util.RedirectIfNotLoggedIn(w, r)
 
 	q := datastore.NewQuery("Booth").Ancestor(booth.Key(c)).Order("-Date").Limit(10)
 	booths := make([]model.Booth, 10)
@@ -48,13 +47,12 @@ func handleGetAllBooths(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Creates a Booth
 func handleCreateBooth(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 	u := user.Current(c)
-	if u == nil {
-		w.Header().Set("Location", "/")
-		return
-	}
+
+	util.RedirectIfNotLoggedIn(w, r)
 
 	b := model.Booth{
 		Author: u.String(),
