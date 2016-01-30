@@ -3,8 +3,11 @@
     <title>Index</title>
 </head>
 <body>
+    {{ with .User}}
     Hello {{ . }}
+    {{ end }}
 
     <a href="/booths">Show booths</a>
+    <a href="/logout">Logout</a>
 </body>
 </html>
