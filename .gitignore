@@ -1,4 +1,13 @@
-*.iml
 app.yaml
 source-context.json
 source-contexts.json
+
+
+.*
+!.gitignore
+pkg
+bin
+src
+!src/modules
+*.iml
+/vendor
