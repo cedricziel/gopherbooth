@@ -7,7 +7,8 @@ source-contexts.json
 !.gitignore
 pkg
 bin
-src
-!src/modules
+src/github.com
+src/golang.org
+src/google.golang.org
 *.iml
 /vendor
