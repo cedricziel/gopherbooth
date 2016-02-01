@@ -1,4 +1,4 @@
-package gopherbooth
+package main
 
 import (
 	"net/http"
