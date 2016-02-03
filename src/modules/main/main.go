@@ -17,6 +17,7 @@ type Page struct {
 func init() {
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/booths", handlers.HandleBooths)
+	http.HandleFunc("/bucket", handlers.HandleBuckets)
 	http.HandleFunc("/logout", handleLogout)
 	http.HandleFunc("/login", handleLogin)
 }
